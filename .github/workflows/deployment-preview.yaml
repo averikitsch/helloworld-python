@@ -20,7 +20,6 @@ env:
   SERVICE: myservice
   REGION: us-central1
   TAG: pr-${{ github.event.number }}
-  CONTAINER: gcr.io/${{ env.PROJECT_ID }}/deployment-previews
 
 jobs:
   deploy:
@@ -56,7 +55,7 @@ jobs:
   preview:
     needs: deploy
     runs-on: ubuntu-latest
-    container: ${{ env.CONTAINER }}
+    container: gcr.io/starter-akitsch/deployment-previews
     steps:
     - name: Link revision on pull request
       run: set --project-id ${{ env.PROJECT_ID }} \
