@@ -54,6 +54,7 @@ jobs:
     
   preview:
     needs: deploy
+    runs-on: ubuntu-latest
     container: gcr.io/${{ env.PROJECT_ID }}/deployment-previews
     steps:
     - name: Link revision on pull request
