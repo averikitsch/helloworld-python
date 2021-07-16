@@ -63,10 +63,5 @@ jobs:
 
     steps:
     - name: Link revision on pull request
-      run: set --project-id ${{ env.PROJECT_ID }} \
-        --region ${{ env.REGION }} \
-        --service ${{ env.SERVICE }} \
-        --pull-request ${{ github.event.number }} \
-        --repo-name ${{ github.base_ref }}
-        --commit-sha ${{ github.sha }}
+      run: set --project-id ${{ env.PROJECT_ID }} --region ${{ env.REGION }} --service ${{ env.SERVICE }} --pull-request ${{ github.event.number }} --repo-name ${{ github.repository }} --commit-sha ${{ github.sha }}
 
