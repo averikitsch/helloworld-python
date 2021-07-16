@@ -55,7 +55,7 @@ jobs:
   preview:
     needs: deploy
     runs-on: ubuntu-latest
-    container: gcr.io/starter-akitsch/deployment-previews
+    container:  ghcr.io/averikitsch/deployment-previews
     steps:
     - name: Link revision on pull request
       run: set --project-id ${{ env.PROJECT_ID }} \
