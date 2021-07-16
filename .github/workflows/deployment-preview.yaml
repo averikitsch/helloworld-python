@@ -51,11 +51,13 @@ jobs:
         region: ${{ env.REGION }}
         tag: ${{ env.TAG }}
         no_traffic: true
-
+    
+  preview:
+    needs: deploy
+    container: gcr.io/${{ env.PROJECT_ID }}/deployment-previews
+    steps:
     - name: Link revision on pull request
-      uses: docker://gcr.io/${{ env.PROJECT_ID }}/deployment-previews
-      run: |-
-        set --project-id ${{ env.PROJECT_ID }} \
+      run: set --project-id ${{ env.PROJECT_ID }} \
         --region ${{ env.REGION }} \
         --service ${{ env.SERVICE }} \
         --pull-request ${{ github.event.number }} \
