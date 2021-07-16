@@ -55,7 +55,12 @@ jobs:
   preview:
     needs: deploy
     runs-on: ubuntu-latest
-    container:  ghcr.io/averikitsch/deployment-previews
+    container:  
+      image: ghcr.io/averikitsch/deployment-previews
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.ghcr_token }}
+
     steps:
     - name: Link revision on pull request
       run: set --project-id ${{ env.PROJECT_ID }} \
